@@ -1,4 +1,4 @@
-package ccom.jafir.encryptsupport.pref
+package com.jafir.encryptsupport.pref
 
 import android.content.SharedPreferences
 import com.chibatching.kotpref.Kotpref

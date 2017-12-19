@@ -1,6 +1,6 @@
 package com.jafir.encryptsupport
 
-import ccom.jafir.encryptsupport.pref.EcGsonNullablePref
+import com.jafir.encryptsupport.pref.EcGsonNullablePref
 import com.chibatching.kotpref.Kotpref
 import com.chibatching.kotpref.KotprefModel
 import com.google.gson.Gson
