@@ -37,6 +37,7 @@ dependencies {
     implementation project(":kotpref")
     implementation project(":initializer")
     implementation project(":enum-support")
+    implementation project(":encrypt-support")
     implementation project(":gson-support")
 }
 

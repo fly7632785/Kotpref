@@ -4,6 +4,8 @@ import android.app.Application
 import com.chibatching.kotpref.Kotpref
 import com.chibatching.kotpref.gsonpref.gson
 import com.google.gson.Gson
+import com.jafir.encryptsupport.cipherAdapter
+import com.jafir.encryptsupport.ecGson
 
 
 class SampleApplication : Application() {
@@ -15,5 +17,7 @@ class SampleApplication : Application() {
 
         // For gson support module
         Kotpref.gson = Gson()
+        Kotpref.ecGson = Gson()
+        Kotpref.cipherAdapter = SharedPrefCipherAdapter(this)
     }
 }
