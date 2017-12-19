@@ -1,7 +1,6 @@
-package com.chibatching.kotprefsample
+package com.jafir.encryptsupport
 
 import android.content.Context
-import com.jafir.encryptsupport.CipherAdapter
 import javax.crypto.SecretKey
 
 /**

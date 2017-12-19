@@ -1,4 +1,4 @@
-package com.chibatching.kotprefsample;
+package com.jafir.encryptsupport;
 
 import android.content.Context;
 import android.content.pm.PackageManager;

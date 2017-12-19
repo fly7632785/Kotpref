@@ -95,6 +95,70 @@ UserInfo.blockingBulk {
     gameLevel = GameLevel.EASY
 }
 ```
+### Add Encryption
+```
+dependencies {
+   
+}
+```
+##### Init
+Init in Application 
+```
+class SampleApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        Kotpref.ecGson = Gson()
+    }
+}
+```
+Then just use
+```
+    var password by ecStringPref("jafirPass")
+    var code1 by ecNullableStringPref()
+    var isMan by ecBooleanPref(true)
+    var age1 by ecIntPref(23)
+    var highScore1 by ecLongPref(1111111111L)
+    var rate1 by ecFloatPref(0.5555f)
+    var person1 by ecGsonPref(Person("g jafir", 21))
+    var avatar21 by ecGsonPref(Avatar())
+    var avatar22 by ecGsonNullablePref(Avatar())
+```
+#####  Advanced
+We have a default CipherAdapter 
+
+If you want to custom your Cipher rules
+
+Just implement CipherAdapter's encrypt and decrypt funs
+
+```
+class SharedPrefCipherAdapter @Throws(Exception::class)
+constructor(context: Context) : CipherAdapter {
+    private val secretKey: SecretKey
+
+    init {
+        this.secretKey = AESUtil.generateKey(context)
+    }
+
+    override fun encrypt(raw: String): String {
+        return AESUtil.execEncrypted(secretKey, raw)
+    }
+
+    override fun decrypt(encode: String): String {
+        return AESUtil.execDecrypted(secretKey, encode)
+    }
+}
+```
+Init in Application
+```
+class SampleApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        Kotpref.ecGson = Gson()
+        Kotpref.cipherAdapter = SharedPrefCipherAdapter(this)
+    }
+}
+```
+And more detail in the source code, you can see it 
 
 ### Result shared preference xml
 

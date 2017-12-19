@@ -13,7 +13,7 @@ import kotlin.properties.ReadWriteProperty
  */
 var Kotpref.cipherAdapter: CipherAdapter?
     get() {
-        return KotprefCipherHolder.cipherAdapter
+        return KotprefCipherHolder.cipherAdapter ?: SharedPrefCipherAdapter(context!!)
     }
     set(value) {
         KotprefCipherHolder.cipherAdapter = value

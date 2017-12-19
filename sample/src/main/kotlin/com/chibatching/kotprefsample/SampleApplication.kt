@@ -4,6 +4,7 @@ import android.app.Application
 import com.chibatching.kotpref.Kotpref
 import com.chibatching.kotpref.gsonpref.gson
 import com.google.gson.Gson
+import com.jafir.encryptsupport.SharedPrefCipherAdapter
 import com.jafir.encryptsupport.cipherAdapter
 import com.jafir.encryptsupport.ecGson
 
