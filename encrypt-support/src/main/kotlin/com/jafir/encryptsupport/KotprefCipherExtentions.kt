@@ -1,6 +1,5 @@
 package com.jafir.encryptsupport
 
-import com.jafir.encryptsupport.pref.EcGsonNullablePref
 import com.chibatching.kotpref.Kotpref
 import com.chibatching.kotpref.KotprefModel
 import com.google.gson.Gson
@@ -13,7 +12,7 @@ import kotlin.properties.ReadWriteProperty
  */
 var Kotpref.cipherAdapter: CipherAdapter?
     get() {
-        return KotprefCipherHolder.cipherAdapter ?: SharedPrefCipherAdapter(context!!)
+        return KotprefCipherHolder.cipherAdapter
     }
     set(value) {
         KotprefCipherHolder.cipherAdapter = value

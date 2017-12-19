@@ -14,6 +14,7 @@ dependencies {
     compile "com.chibatching.kotpref:initializer:2.2.0" // optional
     compile "com.chibatching.kotpref:enum-support:2.2.0" // optional
     compile "com.chibatching.kotpref:gson-support:2.2.0" // optional
+    compile 'com.github.fly7632785:KotprefEncryptSupport:1.0.0' //optional
 }
 ```
 
@@ -96,9 +97,16 @@ UserInfo.blockingBulk {
 }
 ```
 ### Add Encryption
+```groovy
+allprojects {
+		repositories {
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
 ```
 dependencies {
-   
+   compile 'com.github.fly7632785:KotprefEncryptSupport:1.0.0'
 }
 ```
 ##### Init
@@ -108,6 +116,7 @@ class SampleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Kotpref.ecGson = Gson()
+        Kotpref.cipherAdapter = SharedPrefCipherAdapter(applicationContext)
     }
 }
 ```
@@ -124,7 +133,6 @@ Then just use
     var avatar22 by ecGsonNullablePref(Avatar())
 ```
 #####  Advanced
-We have a default CipherAdapter 
 
 If you want to custom your Cipher rules
 
@@ -145,16 +153,6 @@ constructor(context: Context) : CipherAdapter {
 
     override fun decrypt(encode: String): String {
         return AESUtil.execDecrypted(secretKey, encode)
-    }
-}
-```
-Init in Application
-```
-class SampleApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        Kotpref.ecGson = Gson()
-        Kotpref.cipherAdapter = SharedPrefCipherAdapter(this)
     }
 }
 ```

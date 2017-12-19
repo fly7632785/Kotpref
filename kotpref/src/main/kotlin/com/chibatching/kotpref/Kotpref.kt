@@ -10,7 +10,7 @@ object Kotpref {
     /**
      * Internal context. If context is not set, Kotpref will throw [IllegalStateException].
      */
-    var context: Context? = null
+    internal var context: Context? = null
         get() {
             return field ?: throw IllegalStateException("Kotpref has not been initialized.")
         }
