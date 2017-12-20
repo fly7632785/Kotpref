@@ -14,7 +14,6 @@ dependencies {
     compile "com.chibatching.kotpref:initializer:2.2.0" // optional
     compile "com.chibatching.kotpref:enum-support:2.2.0" // optional
     compile "com.chibatching.kotpref:gson-support:2.2.0" // optional
-    compile 'com.github.fly7632785:KotprefEncryptSupport:1.0.0' //optional
 }
 ```
 
@@ -97,6 +96,8 @@ UserInfo.blockingBulk {
 }
 ```
 ### Add Encryption
+from [EncryptSupport](https://github.com/fly7632785/KotprefEncryptSupport)
+
 ```groovy
 allprojects {
 		repositories {
@@ -106,16 +107,20 @@ allprojects {
 ```
 ```
 dependencies {
-   compile 'com.github.fly7632785:KotprefEncryptSupport:1.0.0'
+   compile 'com.github.fly7632785:KotprefEncryptSupport:1.0.1'
 }
 ```
 ##### Init
 Init in Application 
+
+It includes gson-support, so ,if you use this lib, you can instead gson-support.
 ```
 class SampleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        Kotpref.ecGson = Gson()
+        Kotpref.init(applicationContext)
+        // add Encrypt Support 
+        Kotpref.gson = Gson()
         Kotpref.cipherAdapter = SharedPrefCipherAdapter(applicationContext)
     }
 }
